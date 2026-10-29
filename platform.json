@@ -1,4 +1,5 @@
 {
+  "api_path_prefix": "/xiaohongshu/",
   "async_class_name": "AsyncXiaohongshuClient",
   "class_name": "XiaohongshuClient",
   "contract_revision": "sha256:d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa",
