@@ -1,0 +1,200 @@
+{
+  "platform": "xiaohongshu",
+  "operationCount": 4,
+  "operationIds": [
+    "xiaohongshu-explore",
+    "xiaohongshu-note",
+    "xiaohongshu-note-comments",
+    "xiaohongshu-search-suggest"
+  ],
+  "methods": {
+    "explore": "xiaohongshu-explore",
+    "note": "xiaohongshu-note",
+    "note_comments": "xiaohongshu-note-comments",
+    "search_suggest": "xiaohongshu-search-suggest"
+  },
+  "operations": {
+    "xiaohongshu-explore": {
+      "id": "xiaohongshu-explore",
+      "method": "GET",
+      "path": "/xiaohongshu/explore",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "channel_id",
+          "in": "query",
+          "type": "string"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Optional explore channel id from the channels list in a previous response. Unknown values are rejected; omit for the default feed.",
+          "in": "query",
+          "name": "channel_id",
+          "type": "string",
+          "x-example": "homefeed.food_v3"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "xiaohongshu-note": {
+      "id": "xiaohongshu-note",
+      "method": "GET",
+      "path": "/xiaohongshu/note",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "url",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "note_id",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "xsec_token",
+          "in": "query",
+          "type": "string"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Note URL carrying xsec_token, normally the note_url returned by /xiaohongshu/explore. Pass url, or both note_id and xsec_token.",
+          "in": "query",
+          "name": "url",
+          "type": "string",
+          "x-example": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567?xsec_token=SYNTHETIC-EXAMPLE-TOKEN-0001&xsec_source=pc_feed"
+        },
+        {
+          "description": "24-character hex note id from an explore card (requires xsec_token)",
+          "in": "query",
+          "name": "note_id",
+          "type": "string",
+          "x-example": "0123456789abcdef01234567"
+        },
+        {
+          "description": "Short-lived feed-issued token that accompanies note_id",
+          "in": "query",
+          "name": "xsec_token",
+          "type": "string",
+          "x-example": "SYNTHETIC-EXAMPLE-TOKEN-0001"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "xiaohongshu-note-comments": {
+      "id": "xiaohongshu-note-comments",
+      "method": "GET",
+      "path": "/xiaohongshu/note-comments",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "url",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "note_id",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "xsec_token",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "cursor",
+          "in": "query",
+          "type": "string"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Note URL carrying xsec_token, normally the note_url returned by /xiaohongshu/explore. Pass url, or both note_id and xsec_token.",
+          "in": "query",
+          "name": "url",
+          "type": "string",
+          "x-example": "https://www.xiaohongshu.com/explore/0123456789abcdef01234567?xsec_token=SYNTHETIC-EXAMPLE-TOKEN-0001&xsec_source=pc_feed"
+        },
+        {
+          "description": "24-character hex note id from an explore card (requires xsec_token)",
+          "in": "query",
+          "name": "note_id",
+          "type": "string",
+          "x-example": "0123456789abcdef01234567"
+        },
+        {
+          "description": "Short-lived feed-issued token that accompanies note_id",
+          "in": "query",
+          "name": "xsec_token",
+          "type": "string",
+          "x-example": "SYNTHETIC-EXAMPLE-TOKEN-0001"
+        },
+        {
+          "description": "Pagination cursor from a previous response",
+          "in": "query",
+          "name": "cursor",
+          "type": "string",
+          "x-example": "cursor-1"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "xiaohongshu-search-suggest": {
+      "id": "xiaohongshu-search-suggest",
+      "method": "GET",
+      "path": "/xiaohongshu/search-suggest",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "keyword",
+          "in": "query",
+          "type": "string",
+          "required": true
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Partially typed search keyword",
+          "in": "query",
+          "name": "keyword",
+          "required": true,
+          "type": "string",
+          "x-example": "coffee"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    }
+  }
+}

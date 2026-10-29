@@ -1,0 +1,44 @@
+{
+  "name": "crawlora/xiaohongshu",
+  "description": "Crawlora Xiaohongshu API client with 4 endpoints for public explore feeds, note details, comments, and search suggestions",
+  "keywords": [
+    "crawlora",
+    "api-client",
+    "sdk",
+    "web-scraping",
+    "scraping-api",
+    "xiaohongshu",
+    "xiaohongshu-api",
+    "xiaohongshu-scraper",
+    "xiaohongshu-data",
+    "xiaohongshu-public-explore-feeds",
+    "xiaohongshu-note-details",
+    "xiaohongshu-comments",
+    "xiaohongshu-search-suggestions"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Crawlora\\Xiaohongshu\\": "src/Crawlora/Xiaohongshu/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crawlora\\Xiaohongshu\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "php tests/client_test.php"
+  },
+  "homepage": "https://crawlora.net/?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=xiaohongshu-php-homepage",
+  "support": {
+    "source": "https://github.com/Crawlora-org/crawlora-xiaohongshu",
+    "docs": "https://crawlora.net/docs?utm_source=packagist&utm_medium=referral&utm_campaign=platform-clients&utm_content=xiaohongshu-php-api-docs"
+  }
+}
