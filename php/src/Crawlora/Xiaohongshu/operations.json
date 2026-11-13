@@ -24,6 +24,16 @@
           "name": "channel_id",
           "in": "query",
           "type": "string"
+        },
+        {
+          "name": "source",
+          "in": "query",
+          "type": "string",
+          "enum": [
+            "mainland",
+            "international",
+            "auto"
+          ]
         }
       ],
       "bodyParam": null,
@@ -35,6 +45,18 @@
           "name": "channel_id",
           "type": "string",
           "x-example": "homefeed.food_v3"
+        },
+        {
+          "description": "Which site answers: mainland (default), international, or auto (mainland, falling back to international only on the regional redirect). Response source always names the site that answered.",
+          "enum": [
+            "mainland",
+            "international",
+            "auto"
+          ],
+          "in": "query",
+          "name": "source",
+          "type": "string",
+          "x-example": "mainland"
         }
       ],
       "produces": [

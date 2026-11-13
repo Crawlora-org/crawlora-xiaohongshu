@@ -2,7 +2,7 @@
 
 This reference lists all 4 public Xiaohongshu API endpoints exposed by the JavaScript/TypeScript, Python, Go, Ruby, Java, PHP, and Rust clients, including the `@crawlora-org/xiaohongshu`, `crawlora-xiaohongshu`, and `crawlora-xiaohongshu` packages. The clients call Crawlora's hosted API. Set `CRAWLORA_API_KEY` to a key for your Crawlora account before making requests. Service usage is billed under that account. These clients do not run a browser or scrape Xiaohongshu locally; Crawlora is independent from and not endorsed by Xiaohongshu or its owners.
 
-The package tracks the public API contract revision `sha256:d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa` bundled with release `0.1.0`. Maintainers can preview daily contract updates with the repository's `Sync live API contract` workflow; unchanged contracts do not produce package releases.
+The package tracks the public API contract revision `sha256:3668547685acbee974c5c9c0a546daf2c0ed7be4ba0331f6ddf82d6c7686b41e` bundled with release `0.2.0`. Maintainers can preview daily contract updates with the repository's `Sync live API contract` workflow; unchanged contracts do not produce package releases.
 
 All language packages expose the selected public API operations in the bundled contract. JavaScript uses camelCase methods, Python and Rust use snake_case methods. JavaScript, Python, and Rust methods are grouped under `xiaohongshu`; Rust uses typed parameter structs and returns the complete HTTP response.
 
@@ -22,7 +22,7 @@ Required and optional parameter names below come from this package's generated O
 
 | JavaScript | Python | Rust | Endpoint | Parameters | Description |
 | --- | --- | --- | --- | --- | --- |
-| `explore` | `explore` | `xiaohongshu.explore` | `GET /xiaohongshu/explore` | `channel_id` (query, optional) | Anonymous Xiaohongshu explore/channel feed |
+| `explore` | `explore` | `xiaohongshu.explore` | `GET /xiaohongshu/explore` | `channel_id` (query, optional), `source` (query, optional; values: `mainland`, `international`, `auto`) | Anonymous Xiaohongshu explore/channel feed |
 | `note` | `note` | `xiaohongshu.note` | `GET /xiaohongshu/note` | `url` (query, optional), `note_id` (query, optional), `xsec_token` (query, optional) | Anonymous Xiaohongshu note detail |
 | `noteComments` | `note_comments` | `xiaohongshu.note_comments` | `GET /xiaohongshu/note-comments` | `url` (query, optional), `note_id` (query, optional), `xsec_token` (query, optional), `cursor` (query, optional) | Anonymous Xiaohongshu note comments |
 | `searchSuggest` | `search_suggest` | `xiaohongshu.search_suggest` | `GET /xiaohongshu/search-suggest` | `keyword` (query, required) | Anonymous Xiaohongshu search suggestions |

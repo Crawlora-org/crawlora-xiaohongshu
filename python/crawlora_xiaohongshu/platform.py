@@ -7,7 +7,7 @@ from .async_client import AsyncCrawloraClient
 class XiaohongshuClient(CrawloraClient):
     """Synchronous Xiaohongshu API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-xiaohongshu-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-xiaohongshu-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     def explore(self, **params: Any) -> Any:
@@ -37,7 +37,7 @@ class XiaohongshuClient(CrawloraClient):
 class AsyncXiaohongshuClient(AsyncCrawloraClient):
     """Asynchronous Xiaohongshu API client."""
     def __init__(self, *args: Any, **kwargs: Any) -> None:
-        kwargs.setdefault('user_agent', 'crawlora-xiaohongshu-python/0.1.0')
+        kwargs.setdefault('user_agent', 'crawlora-xiaohongshu-python/0.2.0')
         super().__init__(*args, **kwargs)
 
     async def explore(self, **params: Any) -> Any:

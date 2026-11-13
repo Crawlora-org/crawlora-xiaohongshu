@@ -2,11 +2,11 @@
   "api_path_prefix": "/xiaohongshu/",
   "async_class_name": "AsyncXiaohongshuClient",
   "class_name": "XiaohongshuClient",
-  "contract_revision": "sha256:d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa",
+  "contract_revision": "sha256:3668547685acbee974c5c9c0a546daf2c0ed7be4ba0331f6ddf82d6c7686b41e",
   "display_name": "Xiaohongshu",
   "general_sdk_version": "1.50.0-sdk.1",
   "golang_module_name": "github.com/Crawlora-org/crawlora-xiaohongshu",
-  "golang_version": "0.1.0",
+  "golang_version": "0.2.0",
   "group_name": "xiaohongshu",
   "java_description": "Java client for Crawlora's hosted Xiaohongshu API, with public explore feeds, note details, comments, and search suggestions. Requires a Crawlora API key.",
   "maven_artifact_id": "crawlora-xiaohongshu",
@@ -17,10 +17,27 @@
   "php_repository": "https://github.com/Crawlora-org/crawlora-xiaohongshu",
   "platform": "xiaohongshu",
   "python_name": "crawlora-xiaohongshu",
+  "releases": [
+    {
+      "changes": [
+        "Updated operation contracts: xiaohongshu-explore, xiaohongshu-note, xiaohongshu-note-comments, xiaohongshu-search-suggest."
+      ],
+      "date": "2026-11-13",
+      "version": "0.2.0"
+    },
+    {
+      "changes": [
+        "Initial Xiaohongshu platform clients for Crawlora's hosted API across JavaScript/TypeScript, Python, Go, Ruby, Java, PHP, and Rust.",
+        "Includes typed endpoint methods generated from contract revision `sha256:d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa`."
+      ],
+      "date": "2026-10-07",
+      "version": "0.1.0"
+    }
+  ],
   "repository": "https://github.com/Crawlora-org/crawlora-xiaohongshu",
   "ruby_gem_name": "crawlora-xiaohongshu",
   "rust_crate_name": "crawlora-xiaohongshu",
   "rust_module_name": "crawlora_xiaohongshu",
-  "source_contract_sha256": "d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa",
-  "version": "0.1.0"
+  "source_contract_sha256": "123c5406ee3b92b07d2ef3dbe21a6ded54b79b25d26c13cbb905a34e3ecc7118",
+  "version": "0.2.0"
 }

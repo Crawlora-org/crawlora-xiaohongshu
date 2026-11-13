@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "crawlora-xiaohongshu"
-version = "0.1.0"
+version = "0.2.0"
 description = "Crawlora Xiaohongshu API client with 4 endpoints for public explore feeds, note details, comments, and search suggestions"
 readme = "README.md"
 keywords = ["crawlora", "api-client", "sdk", "web-scraping", "scraping-api", "xiaohongshu", "xiaohongshu-api", "xiaohongshu-scraper", "xiaohongshu-data", "xiaohongshu-public-explore-feeds", "xiaohongshu-note-details", "xiaohongshu-comments", "xiaohongshu-search-suggestions"]

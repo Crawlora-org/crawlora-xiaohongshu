@@ -161,6 +161,11 @@
             "$ref": "#/definitions/xiaohongshu.ExploreCard"
           },
           "type": "array"
+        },
+        "source": {
+          "description": "Source names the site the cards came from: \"xiaohongshu\" when the\nmainland origin served them, \"rednote\" when this deployment's regional\nfallback did. The two sites are different corpora (measured 2026-11-13:\n0 shared note ids across a 130-note mainland sample and a 165-note Rednote\nsample), so a caller that must know which product the cards belong to\nreads this field instead of assuming the route name.",
+          "example": "xiaohongshu",
+          "type": "string"
         }
       },
       "type": "object"
@@ -400,7 +405,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns one page of the anonymous Xiaohongshu explore feed as normalized note cards: note id, a ready-to-call note_url carrying its short-lived xsec_token, type, title, cover image, like count, and a public author card. Omit channel_id for the upstream default recommendation feed; use channel_id with an id from the channels list returned by this endpoint for a category feed. The upstream serves one server-rendered page per channel (typically 20-33 cards) and has no credential-free cursor, so there is no pagination. Search, user profiles, comments, and note detail without a feed token are not available on this anonymous surface. The xsec_token in note_url is short-lived; call /xiaohongshu/note promptly with the returned note_url, and re-run this endpoint for a fresh token when it expires.",
+        "description": "Returns one page of the anonymous Xiaohongshu explore feed as normalized note cards: note id, a note_url carrying its short-lived xsec_token, type, title, cover image, like count, a public author card, and the site that produced the cards. Omit channel_id for the upstream default recommendation feed; use channel_id with an id from the channels list returned by this endpoint for a category feed. The upstream serves one server-rendered page per channel (typically 20-35 cards) and has no credential-free cursor, so there is no pagination. Search, user profiles, comments, and note detail without a feed token are not available on this anonymous surface. The xsec_token in note_url is short-lived; call /xiaohongshu/note promptly with the returned note_url, and re-run this endpoint for a fresh token when it expires. The mainland site serves its feed only to mainland-China network regions and redirects everyone else to its international sibling, so source chooses which site answers: mainland (default) reads only the mainland feed and reports that regional redirect as an upstream 503; international reads only the international feed; auto reads the mainland feed and falls back to the international one only when that regional redirect is the reason it failed. The response's source field always names the site that actually answered, and the two sites are different corpora with no shared notes, so a caller that needs mainland cards must not accept source=rednote. International cards carry https://www.rednote.com/discovery/item/<id> note_urls, which /xiaohongshu/note does not accept; read them with /rednote/note.",
         "operationId": "xiaohongshu-explore",
         "parameters": [
           {
@@ -409,6 +414,18 @@
             "name": "channel_id",
             "type": "string",
             "x-example": "homefeed.food_v3"
+          },
+          {
+            "description": "Which site answers: mainland (default), international, or auto (mainland, falling back to international only on the regional redirect). Response source always names the site that answered.",
+            "enum": [
+              "mainland",
+              "international",
+              "auto"
+            ],
+            "in": "query",
+            "name": "source",
+            "type": "string",
+            "x-example": "mainland"
           }
         ],
         "produces": [
@@ -468,7 +485,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns one public Xiaohongshu note normalized from the site's server-rendered page state: note id, type, title, description text (including hashtags), topic tags, image URLs, an optional stable video URL with duration, publish time, author card, and public interaction counters. Pass url with the note_url returned by /xiaohongshu/explore. The URL must be an xiaohongshu.com /explore/<id> or /discovery/item/<id> link carrying its xsec_token; a note id alone is not accessible anonymously, and a stale token returns not-found, so re-run /xiaohongshu/explore to mint a fresh one. Comments are not included because the anonymous page state does not carry them.",
+        "description": "Returns one public Xiaohongshu note normalized from the site's server-rendered page state: note id, type, title, description text (including hashtags), topic tags, image URLs, an optional stable video URL with duration, publish time, author card, and public interaction counters. Pass url with the note_url returned by /xiaohongshu/explore. The URL must be an xiaohongshu.com /explore/<id> or /discovery/item/<id> link carrying its xsec_token; a note id alone is not accessible anonymously, and a stale token returns not-found, so re-run /xiaohongshu/explore to mint a fresh one. Comments are not included because the anonymous page state does not carry them. Note detail is served to the mainland-China network region only; a request from another region is reported as an upstream error, distinct from the not-found a stale token returns.",
         "operationId": "xiaohongshu-note",
         "parameters": [
           {
@@ -550,7 +567,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns one page of a public note's comments using a browser-minted signed request, with no account or login. Pass the note_url returned by /xiaohongshu/explore (it carries the required xsec_token). Each item includes the comment id, text, like/sub-comment counters, creation time, IP location when the site exposes it, a public author card, and up to five replies. has_more and cursor continue pagination: pass the returned cursor to fetch the next page. Comments are read from the anonymous signed API, so a stale note token returns an upstream error; re-run /xiaohongshu/explore for a fresh note_url. Search results and profiles are not exposed because they require login.",
+        "description": "Returns one page of a public note's comments using a browser-minted signed request, with no account or login. Pass the note_url returned by /xiaohongshu/explore (it carries the required xsec_token). Each item includes the comment id, text, like/sub-comment counters, creation time, IP location when the site exposes it, a public author card, and up to five replies. has_more and cursor continue pagination: pass the returned cursor to fetch the next page. Comments are read from the anonymous signed API, so a stale note token returns an upstream error; re-run /xiaohongshu/explore for a fresh note_url. Search results and profiles are not exposed because they require login. Comments are served to the mainland-China network region only; another region is reported as an upstream error.",
         "operationId": "xiaohongshu-note-comments",
         "parameters": [
           {
@@ -639,7 +656,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns search suggestions for a partially typed keyword using a browser-minted signed request. Suggestions come from the site's own anonymous suggestion API and require no account or login. Each item carries the suggested text plus optional highlight flags and the suggestion's search type. Only the suggestion list is returned; search *results* need a logged-in session and are not exposed. The signer is a shared browser worker, so this endpoint is slower than the plain page endpoints (roughly a browser-backed request, not a single HTTP call); if no signer worker is available it returns 503.",
+        "description": "Returns search suggestions for a partially typed keyword using a browser-minted signed request. Suggestions come from the site's own anonymous suggestion API and require no account or login. Each item carries the suggested text plus optional highlight flags and the suggestion's search type. Only the suggestion list is returned; search *results* need a logged-in session and are not exposed. The signer is a shared browser worker, so this endpoint is slower than the plain page endpoints (roughly a browser-backed request, not a single HTTP call); if no signer worker is available it returns 503. Suggestions are served to the mainland-China network region only; another region is reported as an upstream error.",
         "operationId": "xiaohongshu-search-suggest",
         "parameters": [
           {

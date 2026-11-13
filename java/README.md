@@ -8,7 +8,7 @@ The official Java client for Crawlora's hosted Xiaohongshu API. It exposes 4 end
 <dependency>
   <groupId>net.crawlora</groupId>
   <artifactId>crawlora-xiaohongshu</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 

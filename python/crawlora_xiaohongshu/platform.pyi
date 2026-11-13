@@ -136,6 +136,7 @@ ModelXiaohongshuExploreResponse = TypedDict('ModelXiaohongshuExploreResponse', {
     'channels': NotRequired[list[ModelXiaohongshuChannel]],
     'count': NotRequired[int],
     'items': NotRequired[list[ModelXiaohongshuExploreCard]],
+    'source': NotRequired[str],
 }, total=False)
 
 ModelXiaohongshuExploreCard = TypedDict('ModelXiaohongshuExploreCard', {
@@ -160,6 +161,7 @@ XiaohongshuExploreParams = TypedDict('XiaohongshuExploreParams', {
     '_timeout': NotRequired[float],
     '_headers': NotRequired[Mapping[str, str]],
     'channel_id': NotRequired[str],
+    'source': NotRequired[Literal['mainland', 'international', 'auto']],
 }, total=False)
 
 XiaohongshuNoteResponse = ModelXiaohongshuNoteResponseDoc
@@ -537,6 +539,7 @@ XiaohongshuExploreDefaultParams = TypedDict('XiaohongshuExploreDefaultParams', {
     '_headers': NotRequired[Mapping[str, str]],
     '_response_type': NotRequired[Literal["auto", "json"]],
     'channel_id': NotRequired[str],
+    'source': NotRequired[Literal['mainland', 'international', 'auto']],
 }, total=False)
 
 XiaohongshuExploreTextResponseParams = TypedDict('XiaohongshuExploreTextResponseParams', {
@@ -544,6 +547,7 @@ XiaohongshuExploreTextResponseParams = TypedDict('XiaohongshuExploreTextResponse
     '_headers': NotRequired[Mapping[str, str]],
     '_response_type': Required[Literal["text"]],
     'channel_id': NotRequired[str],
+    'source': NotRequired[Literal['mainland', 'international', 'auto']],
 }, total=False)
 
 XiaohongshuExploreStreamParams = TypedDict('XiaohongshuExploreStreamParams', {
@@ -551,6 +555,7 @@ XiaohongshuExploreStreamParams = TypedDict('XiaohongshuExploreStreamParams', {
     '_headers': NotRequired[Mapping[str, str]],
     '_response_type': Required[Literal["stream"]],
     'channel_id': NotRequired[str],
+    'source': NotRequired[Literal['mainland', 'international', 'auto']],
 }, total=False)
 
 XiaohongshuNoteDefaultParams = TypedDict('XiaohongshuNoteDefaultParams', {

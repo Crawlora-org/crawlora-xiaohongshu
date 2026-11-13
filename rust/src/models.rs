@@ -147,6 +147,8 @@ pub struct ModelXiaohongshuExploreResponse {
     pub count: Option<i64>,
     #[serde(rename = "items", default, skip_serializing_if = "Option::is_none")]
     pub items: Option<Vec<ModelXiaohongshuExploreCard>>,
+    #[serde(rename = "source", default, skip_serializing_if = "Option::is_none")]
+    pub source: Option<String>,
     #[serde(flatten)]
     pub additional: BTreeMap<String, Value>,
 }
