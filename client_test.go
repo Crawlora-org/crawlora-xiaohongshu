@@ -45,7 +45,7 @@ func TestGeneratedClientRequestAndAllowlist(t *testing.T) {
 	client := NewClient("test-key")
 	client.BaseURL = server.URL + "/api/v1"
 	client.HTTPClient = server.Client()
-	got, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value"})
+	got, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "source": "mainland"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -58,8 +58,8 @@ func TestGeneratedClientRequestAndAllowlist(t *testing.T) {
 	if _, err := client.Call(context.Background(), "unselected-operation", nil); err == nil || !strings.Contains(err.Error(), "unknown") {
 		t.Fatalf("unselected operation error = %v", err)
 	}
-	if "" != "" {
-		if _, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value"}); err == nil || !strings.Contains(err.Error(), "invalid value") {
+	if "source" != "" {
+		if _, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "source": "__invalid_enum__"}); err == nil || !strings.Contains(err.Error(), "invalid value") {
 			t.Fatalf("invalid enum error = %v", err)
 		}
 	}
@@ -77,7 +77,7 @@ func TestGeneratedClientTextResponse(t *testing.T) {
 	client := NewClient("key")
 	client.BaseURL = server.URL + "/api/v1"
 	client.HTTPClient = server.Client()
-	got, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "responseType": "text"})
+	got, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "source": "mainland", "responseType": "text"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -95,7 +95,7 @@ func TestGeneratedClientErrorsAndTimeout(t *testing.T) {
 		client := NewClient("key")
 		client.BaseURL = server.URL + "/api/v1"
 		client.HTTPClient = server.Client()
-		_, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value"})
+		_, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "source": "mainland"})
 		if err == nil || !strings.Contains(err.Error(), "502") {
 			t.Fatalf("HTTP error = %v", err)
 		}
@@ -110,7 +110,7 @@ func TestGeneratedClientErrorsAndTimeout(t *testing.T) {
 		client.BaseURL = server.URL + "/api/v1"
 		client.HTTPClient = server.Client()
 		client.Timeout = 10 * time.Millisecond
-		_, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value"})
+		_, err := client.Call(context.Background(), "xiaohongshu-explore", Params{"channel_id": "space & value", "source": "mainland"})
 		if err == nil {
 			t.Fatal("expected request timeout")
 		}

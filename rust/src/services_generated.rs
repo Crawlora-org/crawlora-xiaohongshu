@@ -24,6 +24,8 @@ impl Services {
 pub struct XiaohongshuExploreParams {
     #[serde(rename = "channel_id", skip_serializing_if = "Option::is_none")]
     pub channel_id: Option<String>,
+    #[serde(rename = "source", skip_serializing_if = "Option::is_none")]
+    pub source: Option<String>,
 }
 
 #[derive(Debug, Clone, Default, serde::Serialize)]

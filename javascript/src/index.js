@@ -9,7 +9,7 @@ import {
 
 export class XiaohongshuClient extends CrawloraClient {
   constructor(options = {}) {
-    super({ ...options, userAgent: options.userAgent ?? "crawlora-xiaohongshu-js/0.1.0" });
+    super({ ...options, userAgent: options.userAgent ?? "crawlora-xiaohongshu-js/0.2.0" });
     this["explore"] = (...args) => this.request("xiaohongshu-explore", ...args);
     this["note"] = (...args) => this.request("xiaohongshu-note", ...args);
     this["noteComments"] = (...args) => this.request("xiaohongshu-note-comments", ...args);
@@ -26,5 +26,5 @@ export {
   CrawloraServerError
 };
 export { groups, operations, operationCount, OperationIds } from "./operations.js";
-export const VERSION = "0.1.0";
+export const VERSION = "0.2.0";
 export default XiaohongshuClient;

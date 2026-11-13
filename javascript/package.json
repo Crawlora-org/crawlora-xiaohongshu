@@ -1,6 +1,6 @@
 {
   "name": "@crawlora-org/xiaohongshu",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Crawlora Xiaohongshu API client with 4 endpoints for public explore feeds, note details, comments, and search suggestions",
   "homepage": "https://crawlora.net/?utm_source=npm&utm_medium=referral&utm_campaign=platform-clients&utm_content=xiaohongshu-javascript-homepage",
   "bugs": { "url": "https://github.com/Crawlora-org/crawlora-xiaohongshu/issues" },

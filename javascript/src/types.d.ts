@@ -111,6 +111,7 @@ export interface ModelXiaohongshuExploreResponse {
   "channels"?: Array<ModelXiaohongshuChannel>;
   "count"?: number;
   "items"?: Array<ModelXiaohongshuExploreCard>;
+  "source"?: string;
 }
 
 export interface ModelXiaohongshuExploreCard {
@@ -132,6 +133,7 @@ export interface ModelXiaohongshuChannel {
 export type XiaohongshuExploreResponse = CrawloraResponse<ModelXiaohongshuExploreResponseDoc>;
 export interface XiaohongshuExploreParams {
   "channel_id"?: string;
+  "source"?: "mainland" | "international" | "auto";
 }
 
 export type XiaohongshuNoteResponse = CrawloraResponse<ModelXiaohongshuNoteResponseDoc>;

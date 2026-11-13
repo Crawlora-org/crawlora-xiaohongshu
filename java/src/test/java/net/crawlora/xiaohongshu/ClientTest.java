@@ -89,7 +89,7 @@ class ClientTest {
     }
 
     @Test void rejectsInvalidEnumsAndClosedClientCalls() {
-        assertTrue(true); // This contract currently defines no operation enum parameters.
+        assertThrows(IllegalArgumentException.class, () -> new Client("key", baseUrl, Duration.ofSeconds(1)).request("xiaohongshu-explore", Map.ofEntries(Map.entry("source", "__invalid_java_test_enum__"))));
         Client client = new Client("key", baseUrl, Duration.ofSeconds(1));
         client.close();
         assertThrows(IllegalStateException.class, () -> client.request("xiaohongshu-explore", Map.ofEntries(Map.entry("channel_id", "value &/one"))));

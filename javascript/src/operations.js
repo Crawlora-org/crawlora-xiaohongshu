@@ -19,6 +19,16 @@ export const operations = {
         "in": "query",
         "name": "channel_id",
         "type": "string"
+      },
+      {
+        "enum": [
+          "mainland",
+          "international",
+          "auto"
+        ],
+        "in": "query",
+        "name": "source",
+        "type": "string"
       }
     ],
     "security": [

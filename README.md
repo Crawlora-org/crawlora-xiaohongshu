@@ -8,7 +8,7 @@ Official Crawlora client packages for the hosted Xiaohongshu API. Access 4 API e
 - Python: [`crawlora-xiaohongshu`](python/README.md)
 - Go: [`github.com/Crawlora-org/crawlora-xiaohongshu`](go.mod)
 - Ruby: [`crawlora-xiaohongshu`](ruby/README.md)
-- Java: [`net.crawlora:crawlora-xiaohongshu:0.1.0`](java/README.md)
+- Java: [`net.crawlora:crawlora-xiaohongshu:0.2.0`](java/README.md)
 - PHP: [`crawlora/xiaohongshu`](php/README.md)
 - Rust: [`crawlora-xiaohongshu`](rust/README.md)
 

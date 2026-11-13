@@ -6,10 +6,10 @@ from .operations import OPERATION_COUNT, OPERATION_IDS, PLATFORM
 
 Client = XiaohongshuClient
 AsyncClient = AsyncXiaohongshuClient
-__version__ = '0.1.0'
+__version__ = '0.2.0'
 DISPLAY_NAME = 'Xiaohongshu'
 PLATFORM = 'xiaohongshu'
-CONTRACT_REVISION = 'sha256:d16e12aef9b5fee56869277f565b679d424fab368cc5241b543e5a063fa81afa'
+CONTRACT_REVISION = 'sha256:3668547685acbee974c5c9c0a546daf2c0ed7be4ba0331f6ddf82d6c7686b41e'
 
 __all__ = [
     "XiaohongshuClient", "AsyncXiaohongshuClient", "Client", "AsyncClient",
